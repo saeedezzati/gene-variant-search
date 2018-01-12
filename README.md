@@ -14,10 +14,9 @@ BACKEND:
 DATABASE:
 - cd invitae/backend
 - sqlite3 db.sqlite3
+- .mode tabs
 - Create a table from the TSV file:
-   - .import /path/to/variant_results.tsv tmp_table
-- To create another table with with auto increment id: 
-    - CREATE TABLE gene_variant_results("id" integer primary key autoincrement, "Gene" TEXT, "Nucleotide Change" TEXT, "Protein Change" TEXT, "Other Mappings" TEXT, "Alias" TEXT, "Transcripts" TEXT, "Region" TEXT, "Reported Classification" TEXT, "Inferred Classification" TEXT, "Source" TEXT, "Last Evaluated" TEXT, "Last Updated" TEXT, "URL" TEXT, "Submitter Comment" TEXT, "Assembly" TEXT, "Chr" TEXT, "Genomic Start" TEXT, "Genomic Stop" TEXT, "Ref" TEXT, "Alt" TEXT, "Accession" TEXT, "Reported Ref" TEXT, "Reported Alt" TEXT ); 
+   - .import /path/to/variant_results.tsv tmp_table 
 - Copy data from first table to second table:[to add the id column to your data]:
     - insert into gene_variant_results("Gene" , "Nucleotide Change" , "Protein Change" , "Other Mappings" , "Alias" , "Transcripts" , "Region" , "Reported Classification" , "Inferred Classification" , "Source" , "Last Evaluated" , "Last Updated" , "URL" , "Submitter Comment" , "Assembly" , "Chr" , "Genomic Start" , "Genomic Stop" , "Ref" , "Alt" , "Accession" , "Reported Ref" , "Reported Alt"  ) select * from tmp_table;
 - Drop the tmp_table:
